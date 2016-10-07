@@ -2,7 +2,7 @@ require('minitest/autorun')
 require('minitest/rg')
 require_relative('../guest')
 
-class TestLine < MiniTest::Test
+class TestGuest < MiniTest::Test
 
     def setup
         @guest = Guest.new("Cookie")
