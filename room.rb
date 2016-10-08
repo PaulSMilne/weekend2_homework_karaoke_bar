@@ -17,6 +17,9 @@ class Room
         new_guests.each {|guest| @guests<< guest.name} 
     end
 
-    
+
+    # def add_song(new_songs, genres)
+    #     new_songs.select {|song, genre| @songs << song.name} 
+    # end    
 
 end

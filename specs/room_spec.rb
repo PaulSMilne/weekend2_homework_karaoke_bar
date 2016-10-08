@@ -35,8 +35,8 @@ class TestRoom < MiniTest::Test
         assert_equal("Pop Room", @room1.name)
      end
 
-     def room_has_songs
-        assert_equal("Wannabe", @room1.song[0].name)
+     def test_room_has_songs
+        assert_equal("Wannabe", @room1.songs[0].title)
      end
 
 end
