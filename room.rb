@@ -13,11 +13,10 @@ class Room
 
     end
 
-    def check_in(guest)
-        @guests << guest
-    end
-   def check_in_multiple_guests(new_guests)
+    def check_in(new_guests)
         new_guests.each {|guest| @guests<< guest.name} 
     end
+
+    
 
 end

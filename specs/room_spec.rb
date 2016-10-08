@@ -11,19 +11,32 @@ class TestRoom < MiniTest::Test
         @guest4 = Guest.new("Cyrus")
         @guest5 = Guest.new("Claudia")
 
-        @guests = [@guest1, @guest2, @guest3, @guest4, @guest5]
+        @new_guests = [@guest1, @guest2, @guest3, @guest4]
+        @one_more_guest = [@guest5]
 
-        @room1 = Room.new("Pop Room", "Wannabe")
+        @song1 = Song.new("Wannabe", "Spice Girls")
+        @song2 = Song.new("Let's Get This Party Started", "Pink")
+        @song3 = Song.new("Bad Romance", "Lady Gaga")
+
+        @pop_songs = [@song1, @song2, @song3]
+
+        @room1 = Room.new("Pop Room", @pop_songs)
     end
 
-    def test_check_in_one_guest
-        @room1.check_in(@guest5)
-        assert_equal("Claudia", @room1.guests[0].name)
-    end
 
-     def test_check_in_multiple_guests
-         @room1.check_in_multiple_guests(@guests)
-         assert_equal(["Cookie", "Diana", "Ewan", "Cyrus", "Claudia"], @room1.guests)
+     def test_check_in_more_guests
+         @room1.check_in(@new_guests)
+         assert_equal(["Cookie","Diana","Ewan","Cyrus"], @room1.guests)
+         @room1.check_in(@one_more_guest)
+         assert_equal(["Cookie","Diana","Ewan","Cyrus", "Claudia"], @room1.guests)
+     end
+
+     def room_has_name
+        assert_equal("Pop Room", @room1.name)
+     end
+
+     def room_has_songs
+        assert_equal("Wannabe", @room1.song[0].name)
      end
 
 end
