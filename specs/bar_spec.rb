@@ -83,4 +83,11 @@ class TestKBar < MiniTest::Test
 
     end
 
+    def test_check_one_or_more_guests_out_of_rooms
+        @room1.check_in([@guest1, @guest3, @guest5, @guest7, @guest9])
+        @room1.check_out([@guest7])
+        @room1.check_out([@guest1, @guest3])
+        assert_equal(["Ewan", "Sandy"], @room1.guests)
+    end
+
 end

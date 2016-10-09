@@ -13,6 +13,7 @@ class TestRoom < MiniTest::Test
 
         @new_guests = [@guest1, @guest2, @guest3, @guest4]
         @one_more_guest = [@guest5]
+        @guests_out = [@guest1]
 
         @song1 = Song.new("Wannabe", "Spice Girls")
         @song2 = Song.new("Let's Get This Party Started", "Pink")
@@ -27,8 +28,15 @@ class TestRoom < MiniTest::Test
      def test_check_in_more_guests
          @room1.check_in(@new_guests)
          assert_equal(["Cookie","Diana","Ewan","Cyrus"], @room1.guests)
-         @room1.check_in(@one_more_guest)
+         @room1.check_in([@guest5])
          assert_equal(["Cookie","Diana","Ewan","Cyrus", "Claudia"], @room1.guests)
+     end
+
+     def test_check_out_guests
+        @room1.check_in(@new_guests)
+        assert_equal(["Cookie","Diana","Ewan","Cyrus"], @room1.guests)
+        @room1.check_out([@guest1])
+        assert_equal(["Diana", "Ewan", "Cyrus"], @room1.guests)
      end
 
      def room_has_name
@@ -38,5 +46,7 @@ class TestRoom < MiniTest::Test
      def test_room_has_songs
         assert_equal("Wannabe", @room1.songs[0].title)
      end
+
+
 
 end
